@@ -7,6 +7,8 @@
         ".gitignore": false,
         "MEAN Graduation Project.code-workspace": false,
         "TODO.md": false,
-        "node_modules": false
+        "node_modules": false,
+        "ui/.vscode": true,
+        "ui/node_modules": true
     }
 }

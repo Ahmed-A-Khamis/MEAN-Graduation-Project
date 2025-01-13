@@ -1,6 +1,6 @@
 Full-Stack Product Management App
 
-    Back-End (Node.js, Express, MongoDB)
+    Back-End (Node.js, Express, MongoDB) {c} {cm:2025-01-13T15:00:31}
         Setting Up the Project {cm:2025-01-12T16:45:25} {c}
             Initialize a Node.js project with `npm init -y` +backend #setup {cm:2025-01-12T16:43:31}
             Install dependencies: `express`, `mongoose`, `dotenv`, `bcryptjs`, `jsonwebtoken`, `joi`, `multer`, `cloudinary` +backend #setup {cm:2025-01-12T16:45:13}
@@ -17,23 +17,23 @@ Full-Stack Product Management App
                 Add **POST `/api/auth/login`** for user login and JWT issuance +backend #auth {cm:2025-01-12T21:07:29}
             Protect routes using JWT-based authentication +backend #auth {cm:2025-01-12T21:24:38}
 
-        Product CRUD Operations
+        Product CRUD Operations {cm:2025-01-13T14:59:46} {c}
             Create a **Product Controller** for CRUD operations +backend #products {cm:2025-01-12T21:27:40}
                 Add **GET `/api/products`** to retrieve all products +backend #products {cm:2025-01-12T21:49:18}
                 Add **DELETE `/api/products/:name`** to delete a product +backend #products {cm:2025-01-12T22:23:21}
                 Add **POST `/api/products`** to create a product +backend #products {cm:2025-01-13T11:40:32}
-                Add **PUT `/api/products/:name`** to update a product +backend #products
+                Add **PUT `/api/products/:name`** to update a product +backend #products {cm:2025-01-13T14:58:31}
             Implement validation using **Joi** for product data +backend #validation {cm:2025-01-12T22:29:54}
 
-        File Uploads (Product Images)
-            Configure **Multer** for file uploads +backend #fileuploads
-            Set up **Cloudinary** for image storage +backend #fileuploads
-            Update the `Product` model to include an `imageUrl` field +backend #fileuploads
+        File Uploads (Product Images) {cm:2025-01-13T15:00:12} {c}
+            Configure **Multer** for file uploads +backend #fileuploads {cm:2025-01-13T15:00:00}
+            Set up **Cloudinary** for image storage +backend #fileuploads {cm:2025-01-13T15:00:02}
+            Update the `Product` model to include an `imageUrl` field +backend #fileuploads {cm:2025-01-13T15:00:09}
 
-        Error Handling {c}
-            Create a global error-handling middleware to standardize error responses +backend #errorhandling
+        Error Handling {cm:2025-01-13T15:00:24} {c}
+            Create a global error-handling middleware to standardize error responses +backend #errorhandling {cm:2025-01-13T15:00:21}
 
-    Front-End (Angular) {c}
+    Front-End (Angular)
         Set Up Angular Project
             Initialize a new Angular project using Angular CLI +frontend #setup
 

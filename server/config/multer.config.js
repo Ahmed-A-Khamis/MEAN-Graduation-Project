@@ -1,5 +1,4 @@
 const myError = require("../utils/myError.util");
-
 const multer = require("multer");
 
 const saveProductImage = multer({
