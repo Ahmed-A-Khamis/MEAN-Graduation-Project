@@ -1,7 +1,7 @@
 const myError = require("../utils/myError.util");
 const productModel = require("../models/product.model");
-const productDataValidator = require("../validators/productData.validator");
-const cloudinary = require("cloudinary").v2;
+const { isProductDataValid } = require("../validators/productData.validator");
+const cloudinary = require("../config/cloudinary.config");
 
 const getProducts = async (req, res, next) => {
     try {
@@ -13,27 +13,35 @@ const getProducts = async (req, res, next) => {
     }
 };
 
-/**
- * product model:
- * name- unique
- * description
- * price
- * quantity
- * imageUrl
- *
- * you need to upload the image to cloudinary first and then store the image url in db
- *
- * use multer to recieve the image
- * and cloudinary to upload it
- */
 const postProduct = async (req, res, next) => {
     try {
-        const { error } = productDataValidator.validate(req.body);
+        const { error } = isProductDataValid(
+            req.body.name,
+            req.body.description,
+            req.body.price,
+            req.body.quantity,
+            req.file.buffer
+        );
         if (error) return next(new myError(error.details[0].message, 400));
 
         const { name, description, price, quantity } = req.body;
-        const imageFile = req.file;
-
+        const imageBuffer = req.file.buffer;
+        const imageUrl = await new Promise((resolve) => {
+            cloudinary.uploader
+                .upload_stream(
+                    {
+                        resource_type: "image",
+                        folder: "productsImages",
+                        public_id: name,
+                        overwrite: true,
+                    },
+                    (error, result) => {
+                        if (error) return next(new myError(error.message, 500));
+                        resolve(result.secure_url);
+                    }
+                )
+                .end(imageBuffer);
+        });
         const product = await productModel.create({
             name,
             description,

@@ -19,14 +19,14 @@ const errorHandler = async (error, req, res, next) => {
         console.log(
             "-------------------- START ERROR HANDLER --------------------"
         );
-        console.error(`UNEXPECTED ERROR: ${err.message}`);
-        console.error(err.stack);
+        console.error(`UNEXPECTED ERROR: ${error.message}`);
+        console.error(error.stack);
         console.log(
             "-------------------- END   ERROR HANDLER --------------------"
         );
         res.status(500);
         res.json({
-            message: `UNEXPECTED Error: ${err.message}`,
+            message: `UNEXPECTED Error: ${error.message}`,
             errorCode: 500,
         });
     }

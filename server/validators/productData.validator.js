@@ -5,7 +5,17 @@ const productSchema = joi.object({
     description: joi.string().required(),
     price: joi.number().min(0).required(),
     quantity: joi.number().min(0).required(),
-    imageUrl: joi.string().uri().required(),
+    image: joi.binary().required(),
 });
 
-module.exports = productSchema;
+function isProductDataValid(name, description, price, quantity, image) {
+    return productSchema.validate({
+        name,
+        description,
+        price,
+        quantity,
+        image,
+    });
+}
+
+module.exports = { isProductDataValid };
