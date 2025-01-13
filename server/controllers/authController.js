@@ -6,6 +6,7 @@ const isUserDataValid = require("../validators/userDataValidator");
 
 require("dotenv").config();
 const BCRYPT_SALT_ROUND = Number(process.env.BCRYPT_SALT_ROUND);
+const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 
 const register = async (req, res, next) => {
     try {
@@ -46,7 +47,9 @@ const login = async (req, res, next) => {
         if (!user) throw new myError("Invalid credentials", 400);
         const isPasswordValid = bcrypt.compareSync(password, user.password);
         if (!isPasswordValid) throw new myError("Invalid credentials", 400);
-        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET_KEY);
+        const token = jwt.sign({ id: user._id }, JWT_SECRET_KEY);
+        console.log("id:", user._id.toString());
+
         return res.status(200).json({
             status: "success",
             message: "User logged in successfully",

@@ -1,10 +1,14 @@
 const myError = require("../utils/myError");
 const jwt = require("jsonwebtoken");
 
+require("dotenv").config("../.env");
+
+const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
+
 const tokenValidator = async (req, res, next) => {
     try {
         const token = req.headers.authorization?.split(" ")[1];
-        const id = jwt.verify(token, process.env.JWT_SECRET_KEY);
+        const id = jwt.verify(token, JWT_SECRET_KEY);
         req.user = id;
         next();
     } catch (error) {
