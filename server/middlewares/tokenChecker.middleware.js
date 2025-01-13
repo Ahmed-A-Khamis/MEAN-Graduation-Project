@@ -1,4 +1,4 @@
-const myError = require("../utils/myError");
+const myError = require("../utils/myError.util");
 const jwt = require("jsonwebtoken");
 
 require("dotenv").config("../.env");

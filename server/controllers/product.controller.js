@@ -1,10 +1,7 @@
-const myError = require("../utils/myError");
-const productModel = require("../models/productModel");
-const productDataValidator = require("../validators/productDataValidator");
+const myError = require("../utils/myError.util");
+const productModel = require("../models/product.model");
+const productDataValidator = require("../validators/productData.validator");
 const cloudinary = require("cloudinary").v2;
-const multer = require("multer");
-const fs = require("fs");
-const path = require("path");
 
 const getProducts = async (req, res, next) => {
     try {
@@ -31,6 +28,23 @@ const getProducts = async (req, res, next) => {
  */
 const postProduct = async (req, res, next) => {
     try {
+        const { error } = productDataValidator.validate(req.body);
+        if (error) return next(new myError(error.details[0].message, 400));
+
+        const { name, description, price, quantity } = req.body;
+        const imageFile = req.file;
+
+        const product = await productModel.create({
+            name,
+            description,
+            price,
+            quantity,
+            imageUrl,
+        });
+        res.status(201).json({
+            message: "Product created successfully",
+            data: product,
+        });
     } catch (error) {
         if (error instanceof myError) next(error);
         else next(new myError(error.message, 500));

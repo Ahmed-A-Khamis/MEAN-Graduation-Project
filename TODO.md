@@ -19,10 +19,10 @@ Full-Stack Product Management App
 
         Product CRUD Operations
             Create a **Product Controller** for CRUD operations +backend #products {cm:2025-01-12T21:27:40}
-                Add **POST `/api/products`** to create a product +backend #products
                 Add **GET `/api/products`** to retrieve all products +backend #products {cm:2025-01-12T21:49:18}
-                Add **PUT `/api/products/:id`** to update a product +backend #products
-                Add **DELETE `/api/products/:id`** to delete a product +backend #products {cm:2025-01-12T22:23:21}
+                Add **DELETE `/api/products/:name`** to delete a product +backend #products {cm:2025-01-12T22:23:21}
+                Add **POST `/api/products`** to create a product +backend #products
+                Add **PUT `/api/products/:name`** to update a product +backend #products
             Implement validation using **Joi** for product data +backend #validation {cm:2025-01-12T22:29:54}
 
         File Uploads (Product Images)

@@ -1,8 +1,8 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const myError = require("../utils/myError");
-const userModel = require("../models/userModel");
-const isUserDataValid = require("../validators/userDataValidator");
+const myError = require("../utils/myError.util");
+const userModel = require("../models/user.model");
+const isUserDataValid = require("../validators/userData.validator");
 
 require("dotenv").config();
 const BCRYPT_SALT_ROUND = Number(process.env.BCRYPT_SALT_ROUND);
@@ -11,29 +11,26 @@ const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 const register = async (req, res, next) => {
     try {
         const { name, email, password: plainPassword } = req.body;
-        if (await userModel.findOne({ email })) {
-            throw new myError("User already exists", 400);
-        } else {
-            const { error } = isUserDataValid(name, email, plainPassword);
-            if (error) {
-                throw new myError(error.details[0].message, 400);
-            } else {
-                const hashedPassword = bcrypt.hashSync(
-                    plainPassword,
-                    BCRYPT_SALT_ROUND
-                );
-                const user = await userModel.create({
-                    name,
-                    email,
-                    password: hashedPassword,
-                });
-                return res.status(201).json({
-                    status: "success",
-                    message: "User created successfully",
-                    data: user,
-                });
-            }
-        }
+        if (await userModel.findOne({ email }))
+            return next(new myError("User already exists", 400));
+
+        const { error } = isUserDataValid(name, email, plainPassword);
+        if (error) return next(new myError(error.details[0].message, 400));
+
+        const hashedPassword = bcrypt.hashSync(
+            plainPassword,
+            BCRYPT_SALT_ROUND
+        );
+        const user = await userModel.create({
+            name,
+            email,
+            password: hashedPassword,
+        });
+        return res.status(201).json({
+            status: "success",
+            message: "User created successfully",
+            data: user,
+        });
     } catch (error) {
         if (error instanceof myError) next(error);
         else next(new myError(error.message, 500));

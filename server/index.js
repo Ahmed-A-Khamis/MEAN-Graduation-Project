@@ -1,13 +1,13 @@
 const express = require("express");
 require("dotenv").config();
-const connectDB = require("./config/dbConfig");
+const connectDB = require("./config/db.config");
 
-const authRoutes = require("./routes/authRoutes");
-const productRoutes = require("./routes/productRoutes");
+const authRoutes = require("./routes/auth.routes");
+const productRoutes = require("./routes/product.routes");
 
-const errorHandler = require("./middlewares/errorHandler");
+const errorHandler = require("./middlewares/errorHandler.middleware");
 
-const tokenValidator = require("./middlewares/tokenValidator");
+const tokenValidator = require("./middlewares/tokenChecker.middleware");
 
 const CONNECTION_STRING = process.env.CONNECTION_STRING;
 const PORT = process.env.PORT;

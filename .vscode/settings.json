@@ -1,8 +1,8 @@
 {
     "files.exclude": {
-        "server/node_modules": false,
-        ".vscode": false,
-        "server/package-lock.json": false,
+        "server/node_modules": true,
+        ".vscode": true,
+        "server/package-lock.json": true,
         "server/package.json": false,
         ".gitignore": false,
         "MEAN Graduation Project.code-workspace": false,

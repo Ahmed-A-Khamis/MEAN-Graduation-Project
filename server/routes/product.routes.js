@@ -4,7 +4,7 @@ const {
     postProduct,
     putProduct,
     deleteProduct,
-} = require("../controllers/productController");
+} = require("../controllers/product.controller");
 
 const router = express.Router();
 

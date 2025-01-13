@@ -1,4 +1,4 @@
-const myError = require("../utils/myError");
+const myError = require("../utils/myError.util");
 
 const errorHandler = async (error, req, res, next) => {
     if (error instanceof myError) {
