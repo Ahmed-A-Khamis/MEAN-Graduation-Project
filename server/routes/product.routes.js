@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.get("/", getProducts);
 router.post("/", saveProductImage.single("image"), postProduct);
-router.put("/:name", putProduct);
+router.put("/:name", saveProductImage.single("image"), putProduct);
 router.delete("/:name", deleteProduct);
 
 module.exports = router;
