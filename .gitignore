@@ -3,3 +3,5 @@ TODO.md
 */node_modules
 */.env
 .gitignore
+server/package-lock.json
+
