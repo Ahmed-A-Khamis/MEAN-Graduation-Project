@@ -5,7 +5,17 @@ const cloudinary = require("../config/cloudinary.config");
 
 const getProducts = async (req, res, next) => {
     try {
-        const products = await productModel.find();
+        const products = await productModel.find(
+            {},
+            {
+                _id: 0,
+                name: 1,
+                description: 1,
+                price: 1,
+                quantity: 1,
+                imageUrl: 1,
+            }
+        );
         res.status(200).json(products);
     } catch (error) {
         if (error instanceof myError) next(error);

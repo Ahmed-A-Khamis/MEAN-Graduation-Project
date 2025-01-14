@@ -21,7 +21,7 @@ connectDB(CONNECTION_STRING);
 
 app.use("/api/auth", authRoutes);
 
-app.use(tokenValidator);
+// app.use(tokenValidator); // Temporarly disabled
 
 app.use("/api/products", productRoutes);
 
