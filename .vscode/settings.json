@@ -4,7 +4,7 @@
         ".vscode": true,
         "server/package-lock.json": true,
         "server/package.json": false,
-        ".gitignore": true,
+        ".gitignore": false,
         "MEAN Graduation Project.code-workspace": false,
         "TODO.md": true,
         "node_modules": false,

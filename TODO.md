@@ -38,7 +38,7 @@ Full-Stack Product Management App
             Initialize a new Angular project using Angular CLI +frontend #setup {cm:2025-01-13T15:20:14}
 
         Create Components
-            **Product List Component (`ProductListComponent`)** : {c}
+            **Product List Component (`ProductListComponent`)** :
                 Display a list of products with `name`, `description`, `price`, and `image` +frontend #components
             **Product Form Component (`ProductFormComponent`)** : {c}
                 Create a form for adding/editing products +frontend #components

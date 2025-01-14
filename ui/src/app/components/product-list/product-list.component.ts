@@ -1,11 +1,29 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { JsonPipe } from '@angular/common';
+
+type Product = {
+    name: string;
+    description: string;
+    price: string;
+    quantity: string;
+    imageUrl: string;
+};
 
 @Component({
-  selector: 'app-product-list',
-  imports: [],
-  templateUrl: './product-list.component.html',
-  styleUrl: './product-list.component.css'
+    selector: 'app-product-list',
+    imports: [JsonPipe],
+    templateUrl: './product-list.component.html',
+    styleUrl: './product-list.component.css',
 })
 export class ProductListComponent {
-
+    products: Product[] = [];
+    constructor(private http: HttpClient) {}
+    ngOnInit() {
+        this.http
+            .get('http://localhost:3124/api/products')
+            .subscribe((data) => {
+                this.products = data as Product[];
+            });
+    }
 }
