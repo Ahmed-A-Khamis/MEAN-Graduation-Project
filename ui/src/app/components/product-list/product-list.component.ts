@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { JsonPipe } from '@angular/common';
+import { JsonPipe, NgFor } from '@angular/common';
 
 type Product = {
     name: string;
@@ -12,7 +12,7 @@ type Product = {
 
 @Component({
     selector: 'app-product-list',
-    imports: [JsonPipe],
+    imports: [NgFor],
     templateUrl: './product-list.component.html',
     styleUrl: './product-list.component.css',
 })
