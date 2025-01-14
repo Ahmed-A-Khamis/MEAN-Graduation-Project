@@ -4,11 +4,22 @@
         ".vscode": true,
         "server/package-lock.json": true,
         "server/package.json": false,
-        ".gitignore": false,
+        ".gitignore": true,
         "MEAN Graduation Project.code-workspace": false,
-        "TODO.md": false,
+        "TODO.md": true,
         "node_modules": false,
         "ui/.vscode": true,
-        "ui/node_modules": true
+        "ui/node_modules": true,
+        "ui/.gitignore": true,
+        "ui/README.md": true,
+        "ui/package-lock.json": true,
+        "ui/package.json": true,
+        "ui/angular.json": true,
+        "ui/tsconfig.app.json": true,
+        "ui/tsconfig.spec.json": true,
+        "ui/tsconfig.json": true,
+        "ui/.editorconfig": true,
+        ".hintrc": true,
+        "ui/.angular": true
     }
 }

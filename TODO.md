@@ -34,19 +34,20 @@ Full-Stack Product Management App
             Create a global error-handling middleware to standardize error responses +backend #errorhandling {cm:2025-01-13T15:00:21}
 
     Front-End (Angular)
-        Set Up Angular Project
-            Initialize a new Angular project using Angular CLI +frontend #setup
+        Set Up Angular Project {cm:2025-01-13T15:20:17} {c}
+            Initialize a new Angular project using Angular CLI +frontend #setup {cm:2025-01-13T15:20:14}
 
-        Create Components {c}
-            **Product List Component (`ProductListComponent`)** {c}:
+        Create Components
+            **Product List Component (`ProductListComponent`)** : {c}
                 Display a list of products with `name`, `description`, `price`, and `image` +frontend #components
-            **Product Form Component (`ProductFormComponent`)** {c}:
+            **Product Form Component (`ProductFormComponent`)** : {c}
                 Create a form for adding/editing products +frontend #components
                 Add fields: `name`, `description`, `price` +frontend #components
-            **Login Component (`LoginComponent`)** {c}:
+            **Login Component (`LoginComponent`)** : {c}
                 Create a login form for `email` and `password` +frontend #auth
                 Handle login with `AuthService` +frontend #auth
-            **Register Component (`RegisterComponent`)** {c}:
+            **Register Component (`RegisterComponent`)** : {c}
+                Create a registration form +frontend #auth
                 Create a registration form +frontend #auth
                 Handle registration with `AuthService` +frontend #auth
 
