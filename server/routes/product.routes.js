@@ -10,6 +10,7 @@ const { saveProductImage } = require("../config/multer.config");
 const router = express.Router();
 
 router.get("/", getProducts);
+router.get("/:name", getProducts);
 router.post("/", saveProductImage.single("image"), postProduct);
 router.put("/:name", saveProductImage.single("image"), putProduct);
 router.delete("/:name", deleteProduct);

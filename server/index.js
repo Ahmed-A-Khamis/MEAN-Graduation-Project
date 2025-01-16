@@ -1,5 +1,7 @@
 const express = require("express");
+const cors = require("cors");
 require("dotenv").config();
+
 const connectDB = require("./config/db.config");
 
 const authRoutes = require("./routes/auth.routes");
@@ -13,6 +15,8 @@ const CONNECTION_STRING = process.env.CONNECTION_STRING;
 const PORT = process.env.PORT;
 
 const app = express();
+
+app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

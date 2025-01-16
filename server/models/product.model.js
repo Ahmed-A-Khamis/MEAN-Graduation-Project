@@ -21,7 +21,7 @@ const productSchema = new mongoose.Schema({
         required: [true, "Please provide a quantity for this product"],
         min: [0, "Quantity should be greater than zero"],
     },
-    imageUrl: {
+    image: {
         type: String,
         required: [true, "Please provide an image for this product"],
     },

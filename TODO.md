@@ -51,14 +51,14 @@ Full-Stack Product Management App
                 Create a registration form +frontend #auth
                 Handle registration with `AuthService` +frontend #auth
 
-        Routing {c}
+        Routing
             Set up routes: `/login`, `/register`, `/products`, `/products/add`, `/products/edit/:id` +frontend #routing
 
         Services {c}
-            **AuthService** {c}:
+            AuthService {c}
                 Handle login and registration requests +frontend #services
                 Store JWT token in localStorage +frontend #services
-            **ProductService** {c}:
+            ProductService {c}
                 Handle product CRUD operations with `HttpClient` +frontend #services
 
         Forms {c}

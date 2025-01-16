@@ -3,8 +3,8 @@
         <div class="col-md-4 mb-4" *ngFor="let product of products">
             <div class="card">
                 <img
-                    src="{{ product.imageUrl }}"
-                    class="card-img-top border-dark-subtle product-image"
+                    src="{{ product.image }}"
+                    class="card-img-top border-dark-subtle product-image object-fit-contain p-1"
                     alt="{{ product.name }}"
                 />
                 <div class="card-body">
@@ -14,6 +14,11 @@
                         <strong>Price: </strong>{{ product.price }}
                     </p>
                     <a href="#" class="btn btn-primary">Buy Now</a>
+                    <a
+                        routerLink="/products/edit/{{ product.name }}"
+                        class="btn btn-success btn-sm ms-2"
+                        >Edit</a
+                    >
                 </div>
             </div>
         </div>

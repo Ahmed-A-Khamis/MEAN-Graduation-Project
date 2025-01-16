@@ -5,18 +5,34 @@ const cloudinary = require("../config/cloudinary.config");
 
 const getProducts = async (req, res, next) => {
     try {
-        const products = await productModel.find(
-            {},
-            {
-                _id: 0,
-                name: 1,
-                description: 1,
-                price: 1,
-                quantity: 1,
-                imageUrl: 1,
-            }
-        );
-        res.status(200).json(products);
+        if (req.params["name"]) {
+            const product = await productModel.findOne({
+                name: req.params["name"],
+            });
+            if (!product) throw new myError("Product not found", 404);
+            const tempProduct = {
+                name: product.name,
+                description: product.description,
+                price: product.price,
+                quantity: product.quantity,
+                image: product.image,
+            };
+
+            res.status(200).json(tempProduct);
+        } else {
+            const products = await productModel.find(
+                {},
+                {
+                    _id: 0,
+                    name: 1,
+                    description: 1,
+                    price: 1,
+                    quantity: 1,
+                    image: 1,
+                }
+            );
+            res.status(200).json(products);
+        }
     } catch (error) {
         if (error instanceof myError) next(error);
         else next(new myError(error.message, 500));
@@ -27,6 +43,7 @@ const postProduct = async (req, res, next) => {
     try {
         const { name, description, price, quantity } = req.body;
         const imageBuffer = req.file.buffer;
+
         const { error } = isProductDataValid(
             name,
             description,
@@ -39,7 +56,7 @@ const postProduct = async (req, res, next) => {
         if (await productModel.findOne({ name }))
             return next(new myError("Product already exists", 400));
 
-        const imageUrl = await new Promise((resolve) => {
+        const image = await new Promise((resolve) => {
             cloudinary.uploader
                 .upload_stream(
                     {
@@ -60,7 +77,7 @@ const postProduct = async (req, res, next) => {
             description,
             price,
             quantity,
-            imageUrl,
+            image,
         });
         res.status(201).json({
             message: "Product created successfully",
@@ -75,7 +92,7 @@ const postProduct = async (req, res, next) => {
 const putProduct = async (req, res, next) => {
     try {
         const { name, description, price, quantity } = req.body;
-        const imageBuffer = req.file.buffer;
+        const imageBuffer = req.file?.buffer;
         const { error } = isProductDataValid(
             name,
             description,
@@ -87,33 +104,46 @@ const putProduct = async (req, res, next) => {
 
         if (!(await productModel.findOne({ name })))
             return next(new myError("Product does not exist", 400));
-
-        const imageUrl = await new Promise((resolve) => {
-            cloudinary.uploader
-                .upload_stream(
-                    {
-                        resource_type: "image",
-                        folder: "productsImages",
-                        public_id: name,
-                        overwrite: true,
-                    },
-                    (error, result) => {
-                        if (error) return next(new myError(error.message, 500));
-                        resolve(result.secure_url);
-                    }
-                )
-                .end(imageBuffer);
-        });
-        const product = await productModel.findOneAndUpdate(
-            { name },
-            {
-                description,
-                price,
-                quantity,
-                imageUrl,
-            },
-            { new: true }
-        );
+        let product;
+        if (imageBuffer) {
+            const image = await new Promise((resolve) => {
+                cloudinary.uploader
+                    .upload_stream(
+                        {
+                            resource_type: "image",
+                            folder: "productsImages",
+                            public_id: name,
+                            overwrite: true,
+                        },
+                        (error, result) => {
+                            if (error)
+                                return next(new myError(error.message, 500));
+                            resolve(result.secure_url);
+                        }
+                    )
+                    .end(imageBuffer);
+            });
+            product = await productModel.findOneAndUpdate(
+                { name },
+                {
+                    description,
+                    price,
+                    quantity,
+                    image,
+                },
+                { new: true }
+            );
+        } else {
+            product = await productModel.findOneAndUpdate(
+                { name },
+                {
+                    description,
+                    price,
+                    quantity,
+                },
+                { new: true }
+            );
+        }
         res.status(201).json({
             message: "Product updated successfully",
             data: product,

@@ -1,18 +1,19 @@
 import { Component, NgModule } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { JsonPipe, NgFor } from '@angular/common';
+import { NgFor } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 type Product = {
     name: string;
     description: string;
     price: string;
     quantity: string;
-    imageUrl: string;
+    image: string;
 };
 
 @Component({
     selector: 'app-product-list',
-    imports: [NgFor],
+    imports: [NgFor, RouterLink],
     templateUrl: './product-list.component.html',
     styleUrl: './product-list.component.css',
 })
