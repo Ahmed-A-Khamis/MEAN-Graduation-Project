@@ -1,1 +1,87 @@
-<p>product-form works!</p>
+<form
+    class="p-4"
+    [formGroup]="productForm"
+    (submit)="submit($event)"
+    (reset)="reset($event)"
+>
+    <h2 class="mb-4">Add product</h2>
+    <div class="row mb-3">
+        <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+            <input
+                type="text"
+                formControlName="name"
+                required
+                class="form-control"
+                id="inputName"
+            />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="inputDescription" class="col-sm-2 col-form-label"
+            >Description</label
+        >
+        <div class="col-sm-10">
+            <textarea
+                required
+                formControlName="description"
+                class="form-control"
+                id="inputDescription"
+                rows="3"
+            ></textarea>
+        </div>
+    </div>
+    <div class="row mb-3 align-items-center">
+        <label for="inputPrice" class="col-sm-2 col-form-label">Price</label>
+        <div class="col-sm-10">
+            <div class="input-group">
+                <input
+                    required
+                    formControlName="price"
+                    type="number"
+                    min="0"
+                    class="form-control"
+                    id="inputPrice"
+                />
+                <span class="input-group-text">EGP</span>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3 align-items-center">
+        <label for="inputQuantity" class="col-sm-2 col-form-label"
+            >Quantity</label
+        >
+        <div class="col-sm-10">
+            <input
+                required
+                formControlName="quantity"
+                type="number"
+                min="0"
+                class="form-control"
+                id="inputQuantity"
+            />
+        </div>
+    </div>
+    <div class="row mb-3 align-items-center">
+        <label for="formFileSm" class="col-form-label col-sm-2"
+            >Product image</label
+        >
+        <div class="col-sm-10">
+            <input
+                required
+                formControlName="image"
+                class="form-control form-control-sm"
+                id="formFileSm"
+                type="file"
+                accept="image/jpeg, image/png, image/jpg"
+            />
+        </div>
+    </div>
+    <div class="mb-3 align-items-center d-flex justify-content-end">
+        <button type="submit" class="btn btn-success me-3">Add Product</button>
+        <button type="reset" class="btn btn-outline-danger btn-sm">
+            Discard
+        </button>
+    </div>
+    <br />
+</form>

@@ -20,7 +20,7 @@
         "ui/tsconfig.json": true,
         "ui/.editorconfig": true,
         ".hintrc": true,
-        "ui/.angular": false,
+        "ui/.angular": true,
         "ui/.angular/cache/19.0.7/ui": true
     }
 }
