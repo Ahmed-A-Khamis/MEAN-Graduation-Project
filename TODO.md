@@ -40,10 +40,10 @@ Full-Stack Product Management App
         Create Components
             **Product List Component (`ProductListComponent`)** : {cm:2025-01-14T13:58:11} {c}
                 Display a list of products with `name`, `description`, `price`, and `image` +frontend #components {cm:2025-01-14T13:57:59}
-            **Product Form Component (`ProductFormComponent`)** :
-                Create a form for adding/editing products +frontend #components
-                Add fields: `name`, `description`, `price` +frontend #components
-            **Login Component (`LoginComponent`)** : {c}
+            **Product Form Component (`ProductFormComponent`)** : {cm:2025-01-16T20:49:24} {c}
+                Create a form for adding/editing products +frontend #components {cm:2025-01-16T20:49:26}
+                Add fields: `name`, `description`, `price` +frontend #components {cm:2025-01-16T20:49:28}
+            **Login Component (`LoginComponent`)** :
                 Create a login form for `email` and `password` +frontend #auth
                 Handle login with `AuthService` +frontend #auth
             **Register Component (`RegisterComponent`)** : {c}

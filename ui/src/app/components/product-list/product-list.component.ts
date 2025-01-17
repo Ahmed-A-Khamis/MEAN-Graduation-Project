@@ -22,9 +22,9 @@ export class ProductListComponent {
     constructor(private http: HttpClient) {}
     ngOnInit() {
         this.http
-            .get('http://localhost:3124/api/products')
+            .get<Product[]>('http://localhost:3124/api/products')
             .subscribe((data) => {
-                this.products = data as Product[];
+                this.products = data;
             });
     }
 }

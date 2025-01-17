@@ -1,4 +1,14 @@
 <div class="container">
+    <h1 class="text-center">Products List</h1>
+    <div>
+        <button
+            type="button"
+            [routerLink]="['/products', 'add']"
+            class="btn btn-sm btn-primary mb-3"
+        >
+            Add New Product
+        </button>
+    </div>
     <div class="row">
         <div class="col-md-4 mb-4" *ngFor="let product of products">
             <div class="card">

@@ -42,7 +42,7 @@ const getProducts = async (req, res, next) => {
 const postProduct = async (req, res, next) => {
     try {
         const { name, description, price, quantity } = req.body;
-        const imageBuffer = req.file.buffer;
+        const imageBuffer = req.file?.buffer;
 
         const { error } = isProductDataValid(
             name,

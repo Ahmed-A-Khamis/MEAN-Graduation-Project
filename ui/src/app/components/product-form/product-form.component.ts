@@ -15,16 +15,17 @@ type Product = {
     description: string;
     price: string;
     quantity: string;
-    imageUrl: string;
+    image: string;
 };
 
 @Component({
     selector: 'app-product-form',
-    imports: [ReactiveFormsModule, CommonModule, FormsModule],
+    imports: [ReactiveFormsModule],
     templateUrl: './product-form.component.html',
     styleUrl: './product-form.component.css',
 })
 export class ProductFormComponent {
+    errorMessage: string = '';
     isEdit: boolean = false;
     productForm: FormGroup;
     selectedFile: File | null = null;
@@ -53,16 +54,24 @@ export class ProductFormComponent {
             if (params['name']) {
                 this.isEdit = true;
                 this.http
-                    .get(`http://localhost:3124/api/products/${params['name']}`)
-                    .subscribe((data: any) => {
-                        this.productForm.setValue({
-                            name: data['name'],
-                            description: data['description'],
-                            price: data['price'],
-                            quantity: data['quantity'],
-                            image: '',
-                        });
-                        this.image = data['image'];
+                    .get<Product>(
+                        `http://localhost:3124/api/products/${params['name']}`
+                    )
+                    .subscribe({
+                        next: (data) => {
+                            this.productForm.setValue({
+                                name: data['name'],
+                                description: data['description'],
+                                price: data['price'],
+                                quantity: data['quantity'],
+                                image: '',
+                            });
+                            this.image = data['image'];
+                        },
+                        error: (error) => {
+                            console.error('Error fetching product:', error);
+                            this.errorMessage = error.message;
+                        },
                     });
             }
         });
@@ -106,6 +115,7 @@ export class ProductFormComponent {
                     },
                     error: (error) => {
                         console.error('Error updating product:', error);
+                        this.errorMessage = error.message;
                     },
                 });
         } else {
@@ -120,16 +130,15 @@ export class ProductFormComponent {
                     },
                     error: (error) => {
                         console.error('Error creating product:', error);
+                        this.errorMessage = error['error'].message;
                     },
                 });
         }
     }
     reset(event: Event) {
-        console.log(this.productForm);
-
-        event.stopPropagation();
         event.preventDefault();
         if (!confirm('Are you sure you want to discard?')) return;
+        this.productForm.reset();
         console.log('Form reset');
     }
 }
