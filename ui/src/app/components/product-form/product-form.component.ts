@@ -1,10 +1,9 @@
-import { CommonModule } from '@angular/common';
+import { NgIf } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import {
     FormControl,
     FormGroup,
-    FormsModule,
     ReactiveFormsModule,
     Validators,
 } from '@angular/forms';
@@ -20,7 +19,7 @@ type Product = {
 
 @Component({
     selector: 'app-product-form',
-    imports: [ReactiveFormsModule],
+    imports: [ReactiveFormsModule, NgIf],
     templateUrl: './product-form.component.html',
     styleUrl: './product-form.component.css',
 })
@@ -140,5 +139,26 @@ export class ProductFormComponent {
         if (!confirm('Are you sure you want to discard?')) return;
         this.productForm.reset();
         console.log('Form reset');
+    }
+    delete(event: Event) {
+        event.preventDefault();
+        if (!confirm('Are you sure you want to delete?')) return;
+        this.http
+            .delete(
+                `http://localhost:3124/api/products/${this.productForm.value.name}`
+            )
+            .subscribe({
+                next: (response) => {
+                    console.log('Product deleted successfully:', response);
+                    this.productForm.reset();
+                    this.selectedFile = null;
+                    this.image = null;
+                    this.router.navigate(['products']);
+                },
+                error: (error) => {
+                    console.error('Error deleting product:', error);
+                    this.errorMessage = error.message;
+                },
+            });
     }
 }

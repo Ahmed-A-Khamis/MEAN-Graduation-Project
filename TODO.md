@@ -37,43 +37,42 @@ Full-Stack Product Management App
         Set Up Angular Project {cm:2025-01-13T15:20:17} {c}
             Initialize a new Angular project using Angular CLI +frontend #setup {cm:2025-01-13T15:20:14}
 
-        Create Components
+        Create Components {c} {cm:2025-01-19T21:30:38}
             **Product List Component (`ProductListComponent`)** : {cm:2025-01-14T13:58:11} {c}
                 Display a list of products with `name`, `description`, `price`, and `image` +frontend #components {cm:2025-01-14T13:57:59}
             **Product Form Component (`ProductFormComponent`)** : {cm:2025-01-16T20:49:24} {c}
                 Create a form for adding/editing products +frontend #components {cm:2025-01-16T20:49:26}
                 Add fields: `name`, `description`, `price` +frontend #components {cm:2025-01-16T20:49:28}
-            **Login Component (`LoginComponent`)** :
-                Create a login form for `email` and `password` +frontend #auth
-                Handle login with `AuthService` +frontend #auth
-            **Register Component (`RegisterComponent`)** : {c}
-                Create a registration form +frontend #auth
-                Create a registration form +frontend #auth
-                Handle registration with `AuthService` +frontend #auth
+            **Login Component (`LoginComponent`)** : {cm:2025-01-18T14:54:52} {c}
+                Create a login form for `email` and `password` +frontend #auth {cm:2025-01-18T14:54:43}
+                Handle login with `AuthService` +frontend #auth {cm:2025-01-18T14:54:49}
+            **Register Component (`RegisterComponent`)** : {cm:2025-01-19T21:30:15} {c}
+                Create a registration form +frontend #auth {cm:2025-01-19T21:30:19}
+                Handle registration with `AuthService` +frontend #auth {cm:2025-01-19T21:30:34}
 
-        Routing
-            Set up routes: `/login`, `/register`, `/products`, `/products/add`, `/products/edit/:id` +frontend #routing
+        Routing {cm:2025-01-19T21:30:41} {c}
+            Set up routes: `/login`, `/register`, `/products`, `/products/add`, `/products/edit/:id` +frontend #routing {cm:2025-01-19T21:30:40}
 
-        Services {c}
-            AuthService {c}
-                Handle login and registration requests +frontend #services
-                Store JWT token in localStorage +frontend #services
-            ProductService {c}
-                Handle product CRUD operations with `HttpClient` +frontend #services
+        Services {cm:2025-01-19T21:30:56} {c}
+            AuthService {c} {cm:2025-01-19T21:30:48}
+                Handle login and registration requests +frontend #services {cm:2025-01-19T21:30:44}
+                Store JWT token in localStorage +frontend #services {cm:2025-01-18T16:56:38}
+            ProductService {cm:2025-01-19T21:30:52} {c}
+                Handle product CRUD operations with `HttpClient` +frontend #services {cm:2025-01-19T21:30:52}
 
-        Forms {c}
-            Implement product forms using Angular Reactive Forms or Template-Driven Forms +frontend #forms
-            Add validation for required fields +frontend #forms
+        Forms {cm:2025-01-18T16:56:56} {c}
+            Implement product forms using Angular Reactive Forms or Template-Driven Forms +frontend #forms {cm:2025-01-18T16:56:57}
+            Add validation for required fields +frontend #forms {cm:2025-01-18T16:56:58}
 
-        Route Guards {c}
+        Route Guards
             Create a **Route Guard** to protect authenticated routes +frontend #auth
             Redirect unauthenticated users to the login page +frontend #auth
 
-        HTTPClient {c}
-            Use `HttpClient` for API requests +frontend #http
+        HTTPClient
+            Use `HttpClient` for API requests +frontend #http {cm:2025-01-18T16:57:18}
             Handle loading states and errors +frontend #http
 
-        Pipes {c}
+        Pipes
             Create a custom pipe for price formatting (e.g., currency display) +frontend #pipes
             Use built-in pipes (e.g., `date`, `uppercase`) as needed +frontend #pipes
 

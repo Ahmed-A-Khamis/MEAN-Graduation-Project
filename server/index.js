@@ -9,7 +9,7 @@ const productRoutes = require("./routes/product.routes");
 
 const errorHandler = require("./middlewares/errorHandler.middleware");
 
-const tokenValidator = require("./middlewares/tokenChecker.middleware");
+const tokenChecker = require("./middlewares/tokenChecker.middleware");
 
 const CONNECTION_STRING = process.env.CONNECTION_STRING;
 const PORT = process.env.PORT;
@@ -25,7 +25,7 @@ connectDB(CONNECTION_STRING);
 
 app.use("/api/auth", authRoutes);
 
-// app.use(tokenValidator); // Temporarly disabled
+// app.use(tokenChecker); // Temporarly disabled
 
 app.use("/api/products", productRoutes);
 

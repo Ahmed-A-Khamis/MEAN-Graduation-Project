@@ -41,12 +41,10 @@ const login = async (req, res, next) => {
     try {
         const { email, password } = req.body;
         const user = await userModel.findOne({ email });
-        if (!user) throw new myError("Invalid credentials", 400);
+        if (!user) throw new myError("Invalid credentials", 401);
         const isPasswordValid = bcrypt.compareSync(password, user.password);
-        if (!isPasswordValid) throw new myError("Invalid credentials", 400);
+        if (!isPasswordValid) throw new myError("Invalid credentials", 401);
         const token = jwt.sign({ id: user._id }, JWT_SECRET_KEY); //TODO: sign the email instead
-        console.log("id:", user._id.toString());
-
         return res.status(200).json({
             status: "success",
             message: "User logged in successfully",
@@ -58,7 +56,20 @@ const login = async (req, res, next) => {
     }
 };
 
+const tokenValidator = async (req, res, next) => {
+    try {
+        const { token } = req.body;
+        const email = jwt.verify(token, JWT_SECRET_KEY);
+        const user = await userModel.findOne({ email });
+        if (!user) return res.status(401).send(false);
+    } catch (error) {
+        if (error instanceof myError) return next(error);
+        return res.status(200).send(true);
+    }
+};
+
 module.exports = {
     register,
     login,
+    tokenValidator,
 };

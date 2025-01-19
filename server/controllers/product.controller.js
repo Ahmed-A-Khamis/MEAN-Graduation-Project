@@ -159,7 +159,8 @@ const deleteProduct = async (req, res, next) => {
         const { name } = req.params;
         const product = await productModel.findOne({ name });
         if (!product) throw new myError("Product not found", 404);
-        await product.deleteOne();
+        const deletedProduct = await product.deleteOne();
+        cloudinary.uploader.destroy(product.image);
         res.status(200).json({
             message: "Product deleted successfully",
             data: product,

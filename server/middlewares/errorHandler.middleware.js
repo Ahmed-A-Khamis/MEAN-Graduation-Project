@@ -6,13 +6,13 @@ const errorHandler = async (error, req, res, next) => {
             "-------------------- START ERROR HANDLER --------------------"
         );
         console.error(`Error ${error.status}: ${error.message}`);
-        console.error(error.stack);
+        // console.error(error.stack);
         console.log(
             "-------------------- END   ERROR HANDLER --------------------"
         );
         res.status(error.status);
         res.json({
-            message: `Error: ${error.message}`,
+            message: error.message,
             errorCode: error.status,
         });
     } else {
@@ -20,7 +20,7 @@ const errorHandler = async (error, req, res, next) => {
             "-------------------- START ERROR HANDLER --------------------"
         );
         console.error(`UNEXPECTED ERROR: ${error.message}`);
-        console.error(error.stack);
+        // console.error(error.stack);
         console.log(
             "-------------------- END   ERROR HANDLER --------------------"
         );

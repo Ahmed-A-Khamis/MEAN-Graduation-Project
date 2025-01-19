@@ -49,6 +49,12 @@
                     </div>
                     <a href="#!" class="text-body">Forgot password?</a>
                 </div>
+                <div>
+                    <p class="text-danger">{{ errorMessage }}</p>
+                </div>
+                <div>
+                    <p class="text-success">{{ successMessage }}</p>
+                </div>
                 <div class="text-center text-lg-start mt-4 pt-2">
                     <button
                         type="submit"
@@ -62,7 +68,9 @@
                     </button>
                     <p class="small fw-bold mt-2 pt-1 mb-0">
                         Don't have an account?
-                        <a href="#!" class="link-danger">Register</a>
+                        <a routerLink="/register" class="btn btn-success btn-sm"
+                            >Register</a
+                        >
                     </p>
                 </div>
             </form>

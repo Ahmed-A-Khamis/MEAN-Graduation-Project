@@ -5,7 +5,7 @@ require("dotenv").config("../.env");
 
 const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 
-const tokenValidator = async (req, res, next) => {
+const tokenChecker = async (req, res, next) => {
     try {
         const token = req.headers.authorization?.split(" ")[1];
         const id = jwt.verify(token, JWT_SECRET_KEY);
@@ -17,4 +17,4 @@ const tokenValidator = async (req, res, next) => {
     }
 };
 
-module.exports = tokenValidator;
+module.exports = tokenChecker;

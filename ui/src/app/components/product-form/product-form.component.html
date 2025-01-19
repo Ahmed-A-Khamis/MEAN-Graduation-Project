@@ -104,14 +104,24 @@
                         class="btn btn-success me-3"
                         [disabled]="productForm.invalid"
                     >
-                        Add Product
+                        <div *ngIf="!isEdit">Add Product</div>
+                        <div *ngIf="isEdit">Save Product</div>
                     </button>
                     <button
+                        *ngIf="!isEdit"
                         type="reset"
                         (click)="reset($event)"
                         class="btn btn-outline-danger btn-sm"
                     >
                         Discard
+                    </button>
+                    <button
+                        *ngIf="isEdit"
+                        type="button"
+                        (click)="delete($event)"
+                        class="btn btn-outline-danger btn-sm"
+                    >
+                        Delete
                     </button>
                 </div>
             </form>

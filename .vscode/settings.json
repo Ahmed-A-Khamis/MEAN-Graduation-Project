@@ -7,7 +7,6 @@
         ".gitignore": true,
         "MEAN Graduation Project.code-workspace": false,
         "TODO.md": true,
-        "node_modules": false,
         "ui/.vscode": true,
         "ui/node_modules": true,
         "ui/.gitignore": true,
@@ -20,7 +19,6 @@
         "ui/tsconfig.json": true,
         "ui/.editorconfig": true,
         ".hintrc": true,
-        "ui/.angular": true,
-        "ui/.angular/cache/19.0.7/ui": true
+        "ui/.angular": true
     }
 }
