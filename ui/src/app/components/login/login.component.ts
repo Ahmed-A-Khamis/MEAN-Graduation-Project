@@ -20,7 +20,10 @@ export class LoginComponent {
     loginForm: FormGroup;
     constructor(private auth: AuthService, private router: Router) {
         this.loginForm = new FormGroup({
-            email: new FormControl('test@test.com', [Validators.required, Validators.email]),
+            email: new FormControl('test@test.com', [
+                Validators.required,
+                Validators.email,
+            ]),
             password: new FormControl('testtest', [Validators.required]),
         });
     }
