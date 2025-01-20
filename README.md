@@ -1,6 +1,6 @@
 # Project Overview
 
-I worked on a project named **First-Demo**, where I utilized the **MEAN stack** (MongoDB, Express.js, Angular, Node.js) to develop a full-stack web application.
+I worked on a project named **Product-Management-App**, where I utilized the **MEAN stack** (MongoDB, Express.js, Angular, Node.js) to develop a full-stack product management web application with CRUD (Create, Read, Update, Delete) operations for managing products, allowing users to add, view, update, and delete products, as well as user authentication and authorization, implemented using **JSON Web Tokens**, for secure access control, and **MongoDB** as the database.
 
 ## Technologies Used
 
