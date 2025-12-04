@@ -1,45 +1,72 @@
-# Project Overview
+# Product-Management-App
 
-I worked on a project named **Product-Management-App**, where I utilized the **MEAN stack** (MongoDB, Express.js, Angular, Node.js) to develop a full-stack product management web application with CRUD (Create, Read, Update, Delete) operations for managing products, allowing users to add, view, update, and delete products, as well as user authentication and authorization, implemented using **JSON Web Tokens**, for secure access control, and **MongoDB** as the database.
+A full-stack product management system built with the **MEAN stack** (MongoDB, Express.js, Angular, Node.js).  
+The application provides complete CRUD workflows for products, secure authentication and authorization, and a responsive, user-friendly interface.
 
-## Technologies Used
+---
 
-### Frontend Development:
+## 🚀 Features
 
--   I used **Angular**, the latest version, to build a dynamic and responsive web application. Angular's component-based architecture allowed me to create reusable UI components, enhancing the maintainability of the code.
--   The application was developed using **TypeScript**, which provided static typing and improved code quality. This helped me catch errors early in the development process and made the code more understandable.
--   I implemented **HTML** and **CSS** for structuring and styling the application, ensuring a user-friendly interface.
+- **Product CRUD:** Add, view, update, and delete products  
+- **User Authentication (JWT):** Secure login, protected APIs, and Angular route guards  
+- **Role-Based Access Control (RBAC):** Admin and standard user permissions  
+- **Responsive Interface:** Works smoothly on desktop and mobile  
+- **Form Validation:** Client-side and server-side validation  
+- **Error Handling:** Global backend error middleware + friendly frontend messages  
+- **Modular Architecture:** Clear separation of components, services, routes, and controllers  
 
-### Backend Development:
+---
 
--   For the server-side, I utilized **Node.js** as the runtime environment, allowing me to run JavaScript on the server.
--   I built **RESTful APIs** using **Express.js**, which facilitated communication between the frontend and backend, enabling data exchange and user interactions.
+## 🧩 Tech Stack
 
-### Database:
+### Frontend
+- Angular (latest)
+- TypeScript
+- Angular Router, Services, Interceptors
+- HTML, CSS
 
--   I chose **MongoDB** as the NoSQL database to store application data. Its flexible schema allowed me to handle various data types efficiently.
+### Backend
+- Node.js
+- Express.js
+- RESTful APIs
+- JWT authentication
+- bcrypt password hashing
 
-### Development Tools:
+### Database
+- MongoDB + Mongoose  
+- User & Product schemas  
+- Indexes for efficient querying  
 
--   I used **npm** for package and dependency management, which streamlined the installation and updating of libraries. My project dependencies are documented in the `package.json` and `package-lock.json`.
--   The **Angular CLI** was instrumental in scaffolding the project and managing various development tasks efficiently.
+### Tools
+- Angular CLI  
+- npm  
+- Git & GitHub  
+- Environment-based configuration  
 
-### Version Control:
+---
 
--   I managed the source code using **Git**, ensuring version control and collaboration. The presence of a `.gitignore` file helped me exclude unnecessary files from version control.
+## 🛠️ Architecture Overview
 
-### Configuration and Build Management:
+    Frontend (Angular)
+      └── Components (UI)
+      └── Services (API & Auth)
+      └── Guards (Route Protection)
 
--   I configured project settings and build options using `angular.json`, which streamlined the development process.
--   I managed TypeScript compilation options through `tsconfig.json`, ensuring that the project adhered to best practices.
+    Backend (Node + Express)
+      └── Routes
+      └── Controllers
+      └── Middleware (Auth, Error Handling)
+      └── Models (Mongoose)
 
-## Methodologies Employed
+    Database (MongoDB)
+      └── Collections for Users & Products
 
--   I adopted a **component-based architecture** in Angular, which promoted modularity and reusability of code.
--   I focused on **RESTful API design**, allowing for flexible and scalable communication between the frontend and backend.
--   I implemented a **responsive design** approach, ensuring that the application was accessible on various devices and screen sizes.
+---
 
-## Additional Notes
+## 🔒 Security
 
--   I included unit tests in my project, as indicated by the test files (e.g., `app.component.spec.ts`), which helped ensure the reliability of my code.
--   I maintained a comprehensive `README.md` file that documented the project setup, usage, and other essential information.
+- JWT authentication with secure token storage  
+- Role-based authorization  
+- Password hashing (bcrypt)  
+- CORS protection  
+- Request validation and sanitization  
